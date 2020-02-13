@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import palette from 'lib/styles/palette';
 import { useDispatch } from 'react-redux';
 import { changeInput } from 'modules/stores/write';
+import CustomButton from 'lib/CustomButton';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 export default function WritePostOps({ tags }) {
   const dispatch = useDispatch();
@@ -10,15 +13,31 @@ export default function WritePostOps({ tags }) {
     (name, value) => dispatch(changeInput({ name, value })),
     [dispatch],
   );
-  const onChangehandle = useCallback(e => {
-    onChangeInput(e.target.name, e.target.value);
-  });
+  useEffect(() => {
+    setHashTags(tags.match(/#[^\s]+/g));
+    return () => {
+      setHashTags(null);
+    };
+  }, [tags]);
+  const [hashtags, setHashTags] = useState(null);
+  const onChangehandle = useCallback(
+    e => {
+      onChangeInput(e.target.name, e.target.value);
+    },
+    [tags],
+  );
 
   return (
     <>
       <PostOpsWrap>
+        <CategoryWrap>
+          <div>Category</div>
+          <div>Study</div>
+          <div>Daily</div>
+          <div>Game</div>
+        </CategoryWrap>
         <TagsWrap>
-          <div>태그</div>
+          <div>Tags</div>
           <input
             name="tags"
             value={tags}
@@ -26,6 +45,18 @@ export default function WritePostOps({ tags }) {
             onChange={onChangehandle}
           />
         </TagsWrap>
+        {Array.isArray(hashtags) &&
+          hashtags.map((tag, i) => (
+            <StyledCustomButtom
+              key={`${tag}${i}`}
+              color="lightGray"
+              size="middle"
+              inline
+              disabled
+            >
+              {tag}
+            </StyledCustomButtom>
+          ))}
       </PostOpsWrap>
     </>
   );
@@ -33,11 +64,29 @@ export default function WritePostOps({ tags }) {
 
 const PostOpsWrap = styled.div`
   height: 7rem;
-  background: green;
+  background: ${palette.gray3};
 `;
 
 // tag, category, series
 // category
+const CategoryWrap = styled.div`
+  padding: 0 1rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  background: ${palette.gray8};
+  & > div {
+    font-size: 1rem;
+    color: white;
+    font-weight: 600;
+    margin-right: 1rem;
+    padding-bottom: 0.2rem;
+  }
+  & > input {
+    flex: 1;
+  }
+`;
+
 const TagsWrap = styled.div`
   padding: 0 1rem;
   height: 2rem;
@@ -53,5 +102,12 @@ const TagsWrap = styled.div`
   }
   & > input {
     flex: 1;
+  }
+`;
+
+const StyledCustomButtom = styled(CustomButton)`
+  &:hover {
+    background: ${palette.gray7};
+    color: ${palette.gray3};
   }
 `;

@@ -1,6 +1,6 @@
-import React from "react";
-import styled, { css } from "styled-components";
-import palette, { buttonColor } from "lib/styles/palette";
+import React from 'react';
+import styled, { css } from 'styled-components';
+import palette, { buttonColor } from 'lib/styles/palette';
 
 const StyledButton = styled.button`
     display : inline-flex;
@@ -13,9 +13,9 @@ const StyledButton = styled.button`
     border-radius:50px;
     background: ${props => buttonColor[props.color].background};
     color: ${props => buttonColor[props.color].color};
-    border : ${props => props.color === "lightGray" && "2px solid"}
+    border : ${props => props.color === 'lightGray' && '2px solid'}
     border-color : ${props =>
-      props.color === "lightGray" && buttonColor[props.color].color};
+      props.color === 'lightGray' && buttonColor[props.color].color};
     & : hover,
     & : focus {
       outline:0;
@@ -31,7 +31,7 @@ const StyledButton = styled.button`
       }
     `}
   ${props =>
-    props.size === "medium" &&
+    props.size === 'medium' &&
     css`
       height: 2rem;
       padding-left: 1.25rem;
@@ -39,7 +39,7 @@ const StyledButton = styled.button`
       font-size: 1rem;
     `}
     ${props =>
-      props.size === "large" &&
+      props.size === 'large' &&
       css`
         height: 2.5rem;
         padding-left: 1.125rem;
@@ -49,22 +49,13 @@ const StyledButton = styled.button`
         }
         font-size: 1.125rem;
       `}
-    &:disabled {
-      cursor: not-allowed;
-      background: ${palette.gray3};
-      color: ${palette.gray5};
-      &:hover {
-        background: ${palette.gray3};
-        color: ${palette.gray5};
-      }
-    }
 `;
 
 const CustomButton = ({
   children,
   inline,
-  color = "teal",
-  size = "medium",
+  color = 'teal',
+  size = 'medium',
   ...props
 }) => {
   return (

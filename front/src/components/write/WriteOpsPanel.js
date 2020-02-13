@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { uploadImg, removeImg } from 'modules/stores/post';
 import WritePostOps from './WritePostOps';
 import { changeInput } from 'modules/stores/write';
+import { center } from 'lib/styles/arrage';
 
 export default function WriteOpsPanel({
   onSubmit,
@@ -50,20 +51,11 @@ export default function WriteOpsPanel({
   return (
     <>
       <WriteOpsWrap encType="multipart/form-data" toggleOps={toggleOps}>
-        <RadioWrap>
-          <input
-            id="post"
-            type="radio"
-            name="filter"
-            value="post"
-            checked="checked"
-          />
-          <label htmlFor="post">Post</label>
-          <input id="series" type="radio" name="filter" value="series" />
-          <label htmlFor="series">Series</label>
-          <input id="project" type="radio" name="filter" value="project" />
-          <label htmlFor="project">Project</label>
-        </RadioWrap>
+        <FilterWrap>
+          <div>Post</div>
+          <div>Series</div>
+          <div>Project</div>
+        </FilterWrap>
         <CommonDesc>
           <ImageWrap onClick={onClickImageUpload}>
             <input
@@ -106,8 +98,8 @@ export default function WriteOpsPanel({
 }
 
 const WriteOpsWrap = styled.form`
-  position: absolute;
-  overflow:hidden
+position: absolute;
+overflow:hidden
   top: 0;
   right: 0;
   background: ${palette.gray2};
@@ -115,6 +107,7 @@ const WriteOpsWrap = styled.form`
   height: 20rem;
   transition: all 1s ease-in;
   padding: 2rem 1rem;
+  border : 2px solid ${palette.gray7}
     ${props =>
       props.toggleOps &&
       css`
@@ -123,12 +116,23 @@ const WriteOpsWrap = styled.form`
       `};
 `;
 
-const RadioWrap = styled.div`
-  color: ${palette.gray7};
-  margin-bottom: 1rem
+const FilterWrap = styled.div`
+  height: 2.5rem;
+  display: flex;
+  background: ${palette.gray2};
+  border-left : 1px solid ${palette.gray7}
+  color: #495057;
+  margin-bottom: 1rem;
   text-align: center;
-  & > label {
-    margin-right: 1rem;
+  & > div {
+    border : 1px solid ${palette.gray7}
+    border-left : none;
+    flex: 1;
+    ${center}
+  }
+  & > div:hover {
+    background : ${palette.gray8}
+    color: ${palette.gray2};
   }
 `;
 
@@ -152,8 +156,8 @@ const ImageWrap = styled.div`
     transform: translateX(50%);
   }
   &:hover {
-    border: 2px dashed ${palette.blue5};
-    color: ${palette.blue5};
+    border: 2px dashed ${palette.gray7};
+    color: ${palette.gray7};
     cursor: pointer;
   }
   &:hover > span {
