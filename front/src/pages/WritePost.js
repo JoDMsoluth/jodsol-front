@@ -9,7 +9,6 @@ export default function WritePost() {
   const header = <EditHeaderContainer />;
   const editor = <EditorPaneContainer />;
   const preview = <PreviewPaneContainer />;
-
   return (
     <>
       <AppLayoutContainer>

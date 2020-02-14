@@ -1,11 +1,11 @@
-import React from "react";
-import styled, { css } from "styled-components";
-import palette from "lib/styles/palette";
-import { Link, withRouter } from "react-router-dom";
+import React from 'react';
+import styled, { css } from 'styled-components';
+import palette from 'lib/styles/palette';
+import { Link, withRouter } from 'react-router-dom';
 
 const BlogNavBar = ({ match, location }) => {
   const { category } = match.params;
-  const filter = location.pathname.split("/");
+  const filter = location.pathname.split('/');
 
   return (
     <>
@@ -34,7 +34,7 @@ const BlogNavBar = ({ match, location }) => {
           </i>
           <b>Series</b>
         </Link>
-        <Link to={`/blog/${category}/tags?page=1`} style={{ marginRight: "0" }}>
+        <Link to={`/blog/${category}/tags?page=1`} style={{ marginRight: '0' }}>
           <i>
             <i className="fas fa-tags"></i>
           </i>
@@ -117,14 +117,14 @@ const ActiveBar = styled.div`
   z-inex: 1;
   transition: all 0.3s ease-in;
   left: ${props =>
-    props.filter === "popular"
-      ? "7.3rem"
-      : props.filter === "latest"
-      ? "14.6rem"
-      : props.filter === "series"
-      ? "21.9rem"
-      : props.filter === "tags"
-      ? "29.2rem"
-      : "0rem"};
+    props.filter === 'popular'
+      ? '7.3rem'
+      : props.filter === 'latest'
+      ? '14.6rem'
+      : props.filter === 'series'
+      ? '21.9rem'
+      : props.filter === 'tags'
+      ? '29.2rem'
+      : '0rem'};
   ${props => console.log(props.filter)}
 `;

@@ -38,7 +38,7 @@ export default function MarkdownPreview({ markdown }) {
   useEffect(() => {
     renderMarkdown();
     Prism.highlightAll();
-  }, [markdown, html]);
+  }, [html, markdown]);
 
   return (
     <>

@@ -16,7 +16,6 @@ export default function EditHeader({
   const onClickHandle = useCallback(() => {
     setToggleOps(!toggleOps);
   }, [toggleOps]);
-
   return (
     <>
       <Header>

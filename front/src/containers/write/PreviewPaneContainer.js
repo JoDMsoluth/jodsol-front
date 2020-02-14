@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 export default function PreviewPaneContainer() {
   const { title, markdown } = useSelector(state => state.write);
+
   return (
     <>
       <PreviewPane title={title} markdown={markdown} />

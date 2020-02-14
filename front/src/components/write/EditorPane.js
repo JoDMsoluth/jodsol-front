@@ -53,6 +53,7 @@ export default function EditorPane({ title, markdown, onChangeInput }) {
           type="text"
           name="title"
           value={title}
+          maxLength="30"
           onChange={onChangehandle}
           placeholder="title"
         />

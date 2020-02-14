@@ -8,19 +8,7 @@ export const initialState = {
   postSuccess: null,
   toc: null,
   activeHeading: null,
-  coverImg: null,
-  images: null,
 };
-export const [
-  UPLOAD_IMAGES_REQUEST,
-  UPLOAD_IMAGES_SUCCESS,
-  UPLOAD_IMAGES_FAILURE,
-] = createRequestActionTypes('UPLOAD_IMAGES');
-export const [
-  UPLOAD_IMAGE_REQUEST,
-  UPLOAD_IMAGE_SUCCESS,
-  UPLOAD_IMAGE_FAILURE,
-] = createRequestActionTypes('UPLOAD_IMAGE');
 
 export const [
   ADD_POST_REQUEST,
@@ -64,15 +52,12 @@ export const REMOVE_IMAGE = 'REMOVE_IMAGE';
 export const UNLOAD_POST = 'UNLOAD_POST';
 
 export const setToc = createAction(SET_TOC, toc => toc);
-export const uploadImg = createAction(
-  UPLOAD_IMAGES_REQUEST,
-  ({ imageFormData }) => ({ imageFormData }),
-);
-export const removeImg = createAction(REMOVE_IMAGE);
+
 export const addPost = createAction(
   ADD_POST_REQUEST,
-  ({ title, markdown, tags, id, category, coverImg }) => ({
+  ({ title, markdown, tags, id, desc, category, coverImg }) => ({
     title,
+    desc,
     markdown,
     tags,
     id,
@@ -146,26 +131,6 @@ export default handleActions(
     [UNLIKE_POST_FAILURE]: (state, action) =>
       produce(state, draft => {
         draft.postError = action.payload;
-      }),
-    [UPLOAD_IMAGE_SUCCESS]: (state, action) =>
-      produce(state, draft => {
-        draft.coverImg = action.payload;
-      }),
-    [UPLOAD_IMAGE_FAILURE]: (state, action) =>
-      produce(state, draft => {
-        draft.postError = action.payload;
-      }),
-    [UPLOAD_IMAGES_SUCCESS]: (state, action) =>
-      produce(state, draft => {
-        draft.images = action.payload;
-      }),
-    [UPLOAD_IMAGES_FAILURE]: (state, action) =>
-      produce(state, draft => {
-        draft.postError = action.payload;
-      }),
-    [REMOVE_IMAGE]: state =>
-      produce(state, draft => {
-        draft.coverImg = null;
       }),
 
     [UNLOAD_POST]: () => initialState,

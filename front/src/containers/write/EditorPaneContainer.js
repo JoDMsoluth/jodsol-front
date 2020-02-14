@@ -11,6 +11,7 @@ export default function EditorPaneContainer() {
     (name, value) => dispatch(changeInput({ name, value })),
     [dispatch],
   );
+
   return (
     <EditorPane
       title={title}

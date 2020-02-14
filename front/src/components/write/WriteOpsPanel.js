@@ -1,11 +1,14 @@
-import React, { useRef, useCallback, useEffect } from 'react';
+import React, { useRef, useCallback } from 'react';
 import styled, { css } from 'styled-components';
 import palette from 'lib/styles/palette';
 import { useDispatch } from 'react-redux';
-import { uploadImg, removeImg } from 'modules/stores/post';
 import WritePostOps from './WritePostOps';
-import { changeInput } from 'modules/stores/write';
+import { changeInput, uploadThumbnail } from 'modules/stores/write';
 import { center } from 'lib/styles/arrage';
+import { useRouteMatch } from 'react-router-dom';
+import CustomButton from 'lib/CustomButton';
+import { useEffect } from 'react';
+import WriteSeriesOps from './WriteSeriesOps';
 
 export default function WriteOpsPanel({
   onSubmit,
@@ -17,6 +20,24 @@ export default function WriteOpsPanel({
 }) {
   const imageInput = useRef();
   const dispatch = useDispatch();
+  const match = useRouteMatch();
+
+  const { filter } = match.params;
+
+  useEffect(() => {
+    if (toggleOps) {
+      window.addEventListener('keydown', escapeKey);
+    } else {
+      window.removeEventListener('keydown', escapeKey);
+    }
+    return () => {};
+  }, [toggleOps]);
+
+  const escapeKey = e => {
+    if (e.key === 'Escape') {
+      setToggleOps(false);
+    }
+  };
 
   const onChangeInput = useCallback(
     (name, value) => dispatch(changeInput({ name, value })),
@@ -28,33 +49,42 @@ export default function WriteOpsPanel({
 
   const onChangeImage = useCallback(
     e => {
-      console.log(e.target.files);
-      if (coverImg) {
-        const imageFormData = new FormData();
-        [].forEach.call(e.target.files, f => {
-          imageFormData.append('image', f);
-          // 'image'는 서버에서도 같은 네이밍을 씀 / 키-벨류 / ajax에서 사용
-        });
-        console.log(imageFormData.getAll('image'));
-        dispatch(uploadImg({ imageFormData }));
-      } else {
-        dispatch(removeImg());
-      }
+      const imageFormData = new FormData();
+      [].forEach.call(e.target.files, f => {
+        imageFormData.append('image', f);
+        // 'image'는 서버에서도 같은 네이밍을 씀 / 키-벨류 / ajax에서 사용
+      });
+      console.log(imageFormData.getAll('image'));
+      dispatch(uploadThumbnail({ imageFormData }));
     },
-    [dispatch],
+    [coverImg, dispatch],
   );
 
-  const onClickImageUpload = useCallback(e => {
-    imageInput.current.click();
-  }, []);
+  const onClickImageUpload = useCallback(
+    e => {
+      imageInput.current.click();
+    },
+    [coverImg],
+  );
+  const onCloseHandle = useCallback(e => {
+    setToggleOps(false);
+  });
+  const WriteOps =
+    filter === 'post' ? (
+      <WritePostOps tags={tags} onChangeInput={onChangeInput} />
+    ) : filter === 'series' ? (
+      <WriteSeriesOps />
+    ) : filter === 'project' ? (
+      <WriteProjectOps />
+    ) : null;
 
   return (
     <>
       <WriteOpsWrap encType="multipart/form-data" toggleOps={toggleOps}>
         <FilterWrap>
-          <div>Post</div>
-          <div>Series</div>
-          <div>Project</div>
+          <FilterList activeFilter={filter === 'post'}>Post</FilterList>
+          <FilterList activeFilter={filter === 'series'}>Series</FilterList>
+          <FilterList activeFilter={filter === 'project'}>Project</FilterList>
         </FilterWrap>
         <CommonDesc>
           <ImageWrap onClick={onClickImageUpload}>
@@ -66,19 +96,12 @@ export default function WriteOpsPanel({
               ref={imageInput}
               onChange={onChangeImage}
             />
-            {coverImg ? (
-              <>
-                <img
-                  src={`${process.env.REACT_APP_SERVER_URL}/${coverImg}`}
-                  alt="coverImg"
-                  width="100px"
-                  height="100px"
-                />
-                <span>Remove</span>
-              </>
-            ) : (
-              <span>Upload</span>
+            {coverImg && (
+              <Thumbnail
+                coverImg={`${process.env.REACT_APP_SERVER_URL}/${coverImg}`}
+              />
             )}
+            <span>Upload</span>
           </ImageWrap>
           <DescWrap>
             <textarea
@@ -86,12 +109,19 @@ export default function WriteOpsPanel({
               value={desc}
               rows="5"
               onChange={onChangehandle}
+              maxLength="250"
             ></textarea>
           </DescWrap>
         </CommonDesc>
-        <CloseButton className="far fa-times-circle" onClick={setToggleOps} />
-        <div onClick={onSubmit}>post</div>
-        <WritePostOps tags={tags} onChangeInput={onChangeInput} />
+        {WriteOps}
+        <ButtonWrap>
+          <CloseButton color="lightGray" size="medium" onClick={onCloseHandle}>
+            Close
+          </CloseButton>
+          <PostButton color="lightGray" size="medium" onClick={onSubmit}>
+            Post
+          </PostButton>
+        </ButtonWrap>
       </WriteOpsWrap>
     </>
   );
@@ -104,15 +134,14 @@ overflow:hidden
   right: 0;
   background: ${palette.gray2};
   width: 20rem;
-  height: 20rem;
-  transition: all 1s ease-in;
-  padding: 2rem 1rem;
+  height: 0rem;
+  transition: all .5s ease-in;
   border : 2px solid ${palette.gray7}
     ${props =>
       props.toggleOps &&
       css`
         padding: 2rem 1rem;
-        height: 20rem;
+        height: 25rem;
       `};
 `;
 
@@ -124,21 +153,24 @@ const FilterWrap = styled.div`
   color: #495057;
   margin-bottom: 1rem;
   text-align: center;
-  & > div {
-    border : 1px solid ${palette.gray7}
-    border-left : none;
-    flex: 1;
-    ${center}
-  }
-  & > div:hover {
-    background : ${palette.gray8}
-    color: ${palette.gray2};
-  }
 `;
 
+const FilterList = styled.div`
+  border: 1px solid ${palette.gray7};
+  border-left: none;
+  flex: 1;
+  ${center}
+  ${props =>
+    props.activeFilter &&
+    css`
+      background: ${palette.gray8};
+      color: ${palette.gray2};
+    `}
+`;
 const CommonDesc = styled.div`
   width: 100%;
   display: flex;
+  margin-bottom: 1rem;
   justify-content: space-evenly;
 `;
 
@@ -173,13 +205,58 @@ const DescWrap = styled.div`
   & > textarea {
     width: 100%;
     height: 100%;
+    outline: ${palette.gray8};
+    outline-style: inset;
   }
 `;
 
-const CloseButton = styled.i`
+const ButtonWrap = styled.div`
+  position: relative;
+`;
+
+const CloseButton = styled.div`
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  font-size: 2rem;
+  top: 1.5rem;
+  left: 0.2rem;
+  height: 2rem;
+  font-size: 1rem;
+  width: 6rem;
+  font-size: 1rem;
   cursor: pointer;
+  text-align: center;
+  padding-top: 0.1rem;
+  font-weight: 600;
+  outline:0;
+  border:2px solid ${palette.gray7};
+  border-radius:50px;
+  transition: all 0.3s ease-in;
+  background: ${palette.gray2}
+  color: ${palette.gray7}
+  &:hover { 
+    color : ${palette.gray3}
+    background : ${palette.gray7}
+  }
+`;
+
+const PostButton = styled(CustomButton)`
+  position: absolute;
+  top: 1.5rem;
+  right: 0.2rem;
+  width: 6rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  &:hover { 
+    color : ${palette.gray2}
+    background : ${palette.gray8}
+  }
+`;
+
+const Thumbnail = styled.div`
+  width: 100%;
+  height: 100%;
+  background: url(${props => props.coverImg});
+  background-position: 50% 50%;
+  background-size: cover;
 `;

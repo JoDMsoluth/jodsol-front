@@ -9,11 +9,14 @@ import { convertToPlainText } from 'lib/markdown';
 const BlogContentCard = ({ post }) => {
   const { _id, title, updatedAt, markdown, tags, likes, coverImg } = post;
   const plainText = convertToPlainText(markdown);
+  const setCoverImg = coverImg
+    ? `${process.env.REACT_APP_SERVER_URL}/${coverImg}`
+    : thumbnail;
   return (
     <>
       <ContentCardWrap>
         <Link to={`/post/${_id}`}>
-          <CoverImg coverImg={coverImg || thumbnail}></CoverImg>
+          <CoverImg coverImg={setCoverImg}></CoverImg>
         </Link>
         <Content>
           <ContentHead>

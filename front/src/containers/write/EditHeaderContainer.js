@@ -7,19 +7,23 @@ import { addSeries } from 'modules/stores/series';
 import { addProejct } from 'modules/stores/project';
 
 const EditorHeaderContainer = ({ history, match }) => {
-  const { title, tags, markdown, desc } = useSelector(({ write }) => write);
-  const { coverImg } = useSelector(({ post }) => post);
+  const { title, tags, markdown, desc, coverImg } = useSelector(
+    ({ write }) => write,
+  );
   const { category, id, filter } = match.params;
   const dispatch = useDispatch();
 
   const onGoBack = () => history.goBack();
-  const onSubmit = () => {
+  const onSubmit = e => {
+    e.preventDefault();
     if (filter === 'post') {
-      dispatch(addPost({ title, markdown, tags, category, id }));
+      dispatch(
+        addPost({ title, markdown, tags, category, desc, coverImg, id }),
+      );
     } else if (filter === 'project') {
-      dispatch(addProejct({ title, desc, markdown, category }));
+      dispatch(addProejct({ title, desc, markdown, category, coverImg }));
     } else if (filter === 'series') {
-      dispatch(addSeries({ title, markdown, desc, category }));
+      dispatch(addSeries({ title, markdown, desc, category, coverImg }));
     }
   };
 

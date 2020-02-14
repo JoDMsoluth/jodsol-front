@@ -20,8 +20,9 @@ import PostHeader from 'components/blog/post/PostHeader';
 
 const PostViewContainer = () => {
   const match = useRouteMatch();
-  const { id, category } = match.params;
+  const { id } = match.params;
   const dispatch = useDispatch();
+
   const { activeHeading, post, postError, loading, toc } = useSelector(
     ({ post, loading }) => ({
       post: post.post,
@@ -66,7 +67,11 @@ const PostViewContainer = () => {
     return null;
   }
 
-  const { title, markdown, tags, coverImg, createdAt, likes } = post;
+  const { title, markdown, tags, coverImg, createdAt, likes, category } = post;
+  const setCoverImg = coverImg
+    ? `${process.env.REACT_APP_SERVER_URL}/${coverImg}`
+    : thumbnail;
+
   return (
     <>
       <PostViewWrap>
@@ -81,7 +86,7 @@ const PostViewContainer = () => {
           title={title}
           likes={likes}
           createdAt={createdAt}
-          thumbnail={coverImg || thumbnail}
+          thumbnail={setCoverImg}
         >
           {title}
         </PostHeader>
@@ -93,10 +98,7 @@ const PostViewContainer = () => {
         <PostViewTags>
           {tags.map((tag, i) => (
             <Link
-              to={`/blog/${category}/tags?tag=${tag.slice(
-                1,
-                tag.length,
-              )}&page=1`}
+              to={`/blog/${category}?tag=${tag.slice(1, tag.length)}&page=1`}
               key={`${tag}${i}`}
             >{`${tag} `}</Link>
           ))}

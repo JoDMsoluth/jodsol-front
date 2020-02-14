@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import palette from "lib/styles/palette";
-import { INITIALIZE } from "modules/stores/write";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import palette from 'lib/styles/palette';
+import { INITIALIZE } from 'modules/stores/write';
+import { useDispatch } from 'react-redux';
 
-export default function EditTemplate({ header, editor, preview }) {
+const EditTemplate = ({ header, editor, preview }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     return () => dispatch({ type: INITIALIZE });
-  });
+  }, []);
   const [leftPercent, setLeftPercent] = useState(0.5);
   const handleMouseMove = e => {
     setLeftPercent(e.clientX / window.innerWidth);
   };
   const handleMouseUp = e => {
-    document.body.removeEventListener("mousemove", handleMouseMove);
-    window.removeEventListener("mouseup", handleMouseUp);
+    document.body.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('mouseup', handleMouseUp);
   };
   const handleSeparatorMouseDown = e => {
-    document.body.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseup", handleMouseUp);
+    document.body.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
   };
   return (
     <>
@@ -36,7 +36,9 @@ export default function EditTemplate({ header, editor, preview }) {
       </EditorWrap>
     </>
   );
-}
+};
+
+export default EditTemplate;
 
 const EditorWrap = styled.div`
   width: 100%;
