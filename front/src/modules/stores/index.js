@@ -6,7 +6,7 @@ import loading from 'modules/stores/loading';
 import comment from 'modules/stores/comment';
 import hashtags from 'modules/stores/hashtags';
 import series from 'modules/stores/series';
-import views from 'modules/stores/views';
+import utils from 'modules/stores/utils';
 import project from 'modules/stores/project';
 
 export default combineReducers({
@@ -17,6 +17,6 @@ export default combineReducers({
   posts,
   loading,
   series,
-  views,
+  utils,
   project,
 });

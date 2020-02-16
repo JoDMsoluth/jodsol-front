@@ -57,6 +57,9 @@ const AppFooter = () => {
             <span>KakaoTalk : JoDmSoluth</span>
           </ContactMe>
           <div>Copyright ⓒ 2019 JoDMSoluth All right reserved.</div>
+          <Link to="">
+            <AdminLogin>Administrator login</AdminLogin>
+          </Link>
         </FooterContent>
       </FooterWrap>
     </>
@@ -122,6 +125,7 @@ const IconStyle = styled.div`
 
 const FooterContent = styled.div`
   padding: 1.5rem 0 0 1.5rem;
+  position : relative;
   width: 100%;
   font-size: 0.7rem;
   display: grid;
@@ -131,7 +135,7 @@ const FooterContent = styled.div`
     align-self: center
     border-right: 2px solid ${palette.gray5};
   }
-  & div:last-child {
+  & div:nth-child(3) {
     font-size: 1rem;
     grid-row: 2;
     grid-column: 1 / 3;
@@ -143,4 +147,15 @@ const ContactMe = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-self: center;
+`;
+
+const AdminLogin = styled.div`
+  position: absolute;
+  top: 1.6rem;
+  right: 2rem;
+  font-size: 0.7rem;
+  &:hover {
+    color: ${palette.gray6};
+    cursor: pointer;
+  }
 `;

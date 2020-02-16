@@ -30,7 +30,7 @@ const BlogContentCard = ({ post }) => {
                         to={`/blog/${post.category}?tag=${tags[tag].substring(
                           1,
                           tags[tag].length,
-                        )}`}
+                        )}&page=1`}
                         key={`${_id}+${i}`}
                       >{`${tags[tag]} `}</Link>
                     ))

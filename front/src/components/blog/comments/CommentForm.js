@@ -121,7 +121,7 @@ const CommentForm = ({
 
 CommentForm.propTypes = {
   parentId: PropTypes.string,
-  comment: PropTypes.array,
+  comment: PropTypes.object,
   edit: PropTypes.bool,
   setEdit: PropTypes.func,
   match: PropTypes.object,

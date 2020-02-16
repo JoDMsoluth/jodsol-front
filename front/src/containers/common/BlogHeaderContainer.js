@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadViews, unloadViews } from 'modules/stores/views';
+import { loadViews, unloadViews } from 'modules/stores/utils';
 import BlogHeader from 'components/common/header';
 
 const BlogHeaderContainer = () => {
   const dispatch = useDispatch();
-  const { totalViews, todayViews } = useSelector(({ views }) => ({
-    totalViews: views.totalViews,
-    todayViews: views.todayViews,
+  const { totalViews, todayViews } = useSelector(({ utils }) => ({
+    totalViews: utils.totalViews,
+    todayViews: utils.todayViews,
   }));
 
   useEffect(() => {

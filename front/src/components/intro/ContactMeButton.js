@@ -1,10 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import CustomButton from "lib/CustomButton";
-import { withRouter } from "react-router-dom";
-import palette from "lib/styles/palette";
-import transitions from "lib/styles/transition";
-import smoothScrollTo, { position } from "lib/scrollTo";
+import React from 'react';
+import styled from 'styled-components';
+import CustomButton from 'lib/CustomButton';
+import { withRouter } from 'react-router-dom';
+import palette from 'lib/styles/palette';
+import transitions from 'lib/styles/transition';
 
 const ContactMeButton = ({ history }) => {
   return (
@@ -17,7 +16,7 @@ const ContactMeButton = ({ history }) => {
             size="medium"
             inline
             onClick={() => {
-              history.push("/print/resume");
+              history.push('/print/resume');
             }}
           >
             See Resume
@@ -27,7 +26,7 @@ const ContactMeButton = ({ history }) => {
             size="medium"
             inline
             onClick={() => {
-              history.push("/profile");
+              history.push('/profile');
             }}
           >
             Contact Me
@@ -64,10 +63,10 @@ const StyledCustomButton = styled(CustomButton)`
     position: absolute;
     border-radius:50px;
     background:${props =>
-      props.color === "lightGray" ? palette.gray9 : "inherit"};
+      props.color === 'lightGray' ? palette.gray9 : 'inherit'};
 
     top: 0rem;;
-    right: ${props => (props.color === "lightGray" ? "0.5rem" : "0rem")};
+    right: ${props => (props.color === 'lightGray' ? '0.5rem' : '0rem')};
     height: 1.7rem;
     width: 7.8rem;
     z-index:-1;

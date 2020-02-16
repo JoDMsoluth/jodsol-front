@@ -1,17 +1,19 @@
-import React from "react";
-import styled from "styled-components";
-import BlogContentList from "./ContentList";
+import React from 'react';
+import styled from 'styled-components';
+import BlogContentList from './ContentList';
 
 export default function BlogContent({ posts, postError, loading }) {
   if (postError) {
-    console.log("post is not exist");
+    console.log('post is not exist');
   }
   if (loading || !posts) {
     return null;
   }
+
+  const postsLength = Math.ceil(posts.length / 3);
   return (
     <>
-      <ContentContainer>
+      <ContentContainer level={postsLength}>
         <BlogContentList posts={posts} />
       </ContentContainer>
     </>
@@ -21,7 +23,14 @@ export default function BlogContent({ posts, postError, loading }) {
 const ContentContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: repeat(3, 32rem);
+  grid-template-rows: ${props =>
+    props.level === 1
+      ? '32rem'
+      : props.level === 2
+      ? '32rem 32rem'
+      : props.level === 3
+      ? '32rem 32rem 32rem'
+      : '0rem'};
   width:100%
   padding: 1rem 3rem 1rem 5rem;
 `;

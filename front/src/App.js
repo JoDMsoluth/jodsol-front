@@ -8,6 +8,8 @@ import {
   BlogPage,
   WritePost,
   ViewPage,
+  LoginPage,
+  ErrorPage,
 } from './pages';
 import ResumeContent from './components/profile/Resume/ResumeContent';
 
@@ -27,13 +29,14 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={IntroPage} />
+          <Route path="/login" component={LoginPage} />
           <Route path="/projects/:category?" component={ProjectPage} />
           <Route path="/profile" component={ProfilePage} />
           <Route path="/blog/:category?/:filter?" component={BlogPage} />
           <Route path="/print/resume" component={ResumeContent} />
           <Route path="/add/:filter/:category/:id?" component={WritePost} />
           <Route path="/:filter/:id" component={ViewPage} />
-          <Route component={IntroPage} />
+          <Route component={ErrorPage} />
         </Switch>
       </BrowserRouter>
     </>

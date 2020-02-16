@@ -125,7 +125,7 @@ export default function MarkdownRender({
     }
     // not found, activate the first heading
     if (!onActiveHeading) return;
-    onActiveHeading(positions[0].id);
+    onActiveHeading(positions && positions[0].id);
   });
 
   const registerEvent = () => {

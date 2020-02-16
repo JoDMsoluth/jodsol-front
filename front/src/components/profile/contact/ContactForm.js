@@ -1,25 +1,39 @@
-import React, { useState, useCallback } from "react";
-import styled from "styled-components";
-import font from "lib/styles/font";
-import palette from "lib/styles/palette";
-import { InputSpan, InputContainer } from "lib/styles/inputStyle";
-import "statics/css/icon.css";
-import CustomButton from "lib/CustomButton";
-import arrange from "lib/styles/arrage";
+import React, { useState, useCallback } from 'react';
+import styled from 'styled-components';
+import font from 'lib/styles/font';
+import palette from 'lib/styles/palette';
+import { InputSpan, InputContainer } from 'lib/styles/inputStyle';
+import 'statics/css/icon.css';
+import CustomButton from 'lib/CustomButton';
+import arrange from 'lib/styles/arrage';
+import { useDispatch } from 'react-redux';
+import { sendMail } from 'modules/stores/utils';
 
-export default function ContactForm() {
+export default function ContactForm({ mailResult }) {
   const useInput = (initialValue = null) => {
     const [value, setValue] = useState(initialValue);
-    const setter = useCallback(e => {
-      setValue(e.target.value);
-    }, []);
+    const setter = useCallback(
+      e => {
+        setValue(e.target.value);
+      },
+      [value],
+    );
     return [value, setter];
   };
+  const dispatch = useDispatch();
+  const [name, setName] = useInput('');
+  const [from, setFrom] = useInput('');
+  const [subject, setSubject] = useInput('');
+  const [content, setContent] = useInput('');
 
-  const [userName, setUserName] = useInput("");
-  const [userMail, setUserMail] = useInput("");
-  const [mailTitle, setMailTitle] = useInput("");
-  const [mailContent, setMailContent] = useInput("");
+  const onSubmit = useCallback(
+    e => {
+      e.preventDefault();
+      dispatch(sendMail({ name, from, subject, content }));
+      console.log(name, 'Dsf');
+    },
+    [dispatch, name, from, subject, content],
+  );
 
   return (
     <FormWrap>
@@ -28,10 +42,10 @@ export default function ContactForm() {
         <InputContainer>
           <InputSpan
             type="text"
-            name="userName"
+            name="name"
             placeholder="Your name"
-            value={userName}
-            onChange={setUserName}
+            value={name}
+            onChange={setName}
           />
           <i className="fas fa-user input-icon"></i>
         </InputContainer>
@@ -40,32 +54,32 @@ export default function ContactForm() {
             type="text"
             name="email"
             placeholder="Email address"
-            value={userMail}
-            onChange={setUserMail}
+            value={from}
+            onChange={setFrom}
           />
           <i className="fas fa-envelope input-icon"></i>
         </InputContainer>
         <InputContainer>
           <InputSpan
             type="text"
-            name="mailTitle"
+            name="subject"
             placeholder="Message title"
-            value={mailTitle}
-            onChange={setMailTitle}
+            value={subject}
+            onChange={setSubject}
           />
           <i className="fas fa-heading input-icon"></i>
         </InputContainer>
         <InputContainer>
           <InputSpan
             type="text"
-            name="mailContent"
+            name="content"
             placeholder="Write your message"
-            value={mailContent}
-            onChange={setMailContent}
+            value={content}
+            onChange={setContent}
           />
           <i className="fas fa-comment-alt input-icon"></i>
         </InputContainer>
-        <StyledCustomButton color="lightGray" size="medium">
+        <StyledCustomButton color="lightGray" size="medium" onClick={onSubmit}>
           Send
         </StyledCustomButton>
       </form>
