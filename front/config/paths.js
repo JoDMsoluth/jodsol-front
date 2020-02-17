@@ -55,7 +55,7 @@ const moduleFileExtensions = [
 // Resolve file paths in the same order as webpack
 const resolveModule = (resolveFn, filePath) => {
   const extension = moduleFileExtensions.find(extension =>
-    fs.existsSync(resolveFn(`${filePath}.${extension}`))
+    fs.existsSync(resolveFn(`${filePath}.${extension}`)),
   );
 
   if (extension) {
@@ -83,8 +83,9 @@ module.exports = {
   appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
+  styles: resolveApp('src/styles'),
+  ssrEntry: resolveApp('src/ssr.js'),
+  ssrBuild: resolveApp('../ssr/src/ssr/'),
 };
-
-
 
 module.exports.moduleFileExtensions = moduleFileExtensions;
