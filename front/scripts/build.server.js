@@ -18,6 +18,7 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 }
 
 function build() {
+  console.log('Creating server build...');
   let compiler = webpack(config);
   compiler.run((err, stats) => {
     if (err) {

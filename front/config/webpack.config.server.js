@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const nodeExternals = require('webpack-node-externals');
 
 const publicPath = paths.servedPath;
@@ -22,12 +23,12 @@ module.exports = {
       {
         oneOf: [
           {
-            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.PNG$/],
             loader: require.resolve('url-loader'),
             options: {
               limit: 10000,
               emitFile: false,
-              name: 'static/images/[name].[hash:8].[ext]',
+              name: 'static/image/[name].[hash:8].[ext]',
             },
           },
           {
@@ -41,14 +42,57 @@ module.exports = {
           },
           {
             test: /\.css$/,
-            loader: require.resolve('css-loader/locals'),
+            exclude: /\.module\.css$/,
+            loader: require.resolve('css-loader'),
+            options: {
+              onlyLocals: true,
+            },
+          },
+          // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
+          // using the extension .module.css
+          {
+            test: /\.module\.css$/,
+            loader: require.resolve('css-loader'),
+            options: {
+              onlyLocals: true,
+              module: true,
+              getLocalIdent: getCSSModuleLocalIdent,
+            },
           },
           {
+            test: /\.(scss|sass)$/,
+            exclude: /\.module\.(scss|sass)$/,
+            use: [
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  onlyLocals: true,
+                },
+              },
+              require.resolve('sass-loader'),
+            ],
+          },
+          {
+            test: /\.module\.(scss|sass)$/,
+            use: [
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  onlyLocals: true,
+                  module: true,
+                  getLocalIdent: getCSSModuleLocalIdent,
+                },
+              },
+              require.resolve('sass-loader'),
+            ],
+          },
+          {
+            test: /\.(PNG|png|jpe?g|gif)$/i,
             exclude: [/\.js$/, /\.html$/, /\.json$/],
             loader: require.resolve('file-loader'),
             options: {
               emitFile: false, // 파일은 따로 만들지 않음.. s3에 저장하기 때문
-              name: 'static/files/[name].[hash:8].[ext]',
+              name: 'static/image/[name].[hash:8].[ext]',
             },
           },
         ],
