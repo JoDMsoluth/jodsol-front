@@ -16,6 +16,6 @@ const enhancer = compose(
 
 const store = createStore(rootReducer, enhancer);
 
-sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga).toPromise();
 export default store;
 // 리덕스 개발자도구 적용

@@ -13,7 +13,7 @@ import {
   loadPostsInSeriesApi,
   searchPostsApi,
 } from './apis/posts';
-import { LOAD_HASHTAGS_REQUEST } from '../../stores/hashtags';
+import { LOAD_HASHTAGS_REQUEST } from '../stores/hashtags';
 
 //--------------------------------------------------------
 const loadPosts = createRequestSaga('LOAD_POSTS', loadPostsApi);

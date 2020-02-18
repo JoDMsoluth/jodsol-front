@@ -1,18 +1,6 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
-import CodeMirror from 'codemirror';
-
-import 'codemirror/mode/markdown/markdown'; // 마크다운 문법 색상
-// 마크다운 내부에 들어가는 코드 색상
-import 'codemirror/mode/javascript/javascript';
-import 'codemirror/mode/jsx/jsx';
-import 'codemirror/mode/css/css';
-import 'codemirror/mode/shell/shell';
-
-// CodeMirror를 위한 CSS 스타일
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/theme/monokai.css';
 import PropTypes from 'prop-types';
 
 export default function EditorPane({ title, markdown, onChangeInput }) {

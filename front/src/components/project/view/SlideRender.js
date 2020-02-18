@@ -21,7 +21,7 @@ const theme = createTheme(
   },
 );
 
-export default function RemarkRender({ markdown }) {
+export default function SlideRender({ markdown }) {
   return (
     <>
       <Deck

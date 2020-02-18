@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "*": ["*", "src/*"]
-    }
+    "target": "es2020",
+    "module": "commonjs"
   }
 }

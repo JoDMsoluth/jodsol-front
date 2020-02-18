@@ -9,24 +9,33 @@ const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 const path = require('path');
 
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
+const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
+
 const imageInlineSizeLimit = parseInt(
   process.env.IMAGE_INLINE_SIZE_LIMIT || '10000',
 );
 
+const publicPath = paths.servedPath;
 const publicUrl = paths.servedPath.slice(0, -1);
 const env = getClientEnvironment(publicUrl);
 
 module.exports = {
   mode: 'production',
+  bail: true,
   entry: paths.ssrIndexJs,
   target: 'node',
   output: {
     path: paths.ssrBuild,
     filename: 'server.js',
-    publicPath: paths.servedPath,
+    publicPath,
   },
   module: {
+    strictExportPresence: true,
     rules: [
+      { parser: { requireEnsure: false } },
       {
         oneOf: [
           {
@@ -140,6 +149,17 @@ module.exports = {
       path.resolve(paths.appSrc, 'lib/replacedModule.ts'),
     ),
     new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
+
+    new ModuleNotFoundPlugin(paths.appPath),
+    new webpack.HotModuleReplacementPlugin(),
+    new WatchMissingNodeModulesPlugin(paths.appNodeModules),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: 'static/css/[name].[contenthash:8].css',
+      chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
+    }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   ],
   optimization: {
     minimize: false,
@@ -152,4 +172,5 @@ module.exports = {
   node: {
     __dirname: false,
   },
+  performance: false,
 };
