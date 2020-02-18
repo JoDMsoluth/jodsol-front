@@ -1,5 +1,5 @@
 import { all, fork, takeEvery } from 'redux-saga/effects';
-import createRequestSaga from 'lib/createRequestSaga';
+import createRequestSaga from '../../lib/createRequestSaga';
 import {
   LOAD_POSTS_REQUEST,
   LOAD_TAG_POSTS_REQUEST,
@@ -13,7 +13,7 @@ import {
   loadPostsInSeriesApi,
   searchPostsApi,
 } from './apis/posts';
-import { LOAD_HASHTAGS_REQUEST } from 'modules/stores/hashtags';
+import { LOAD_HASHTAGS_REQUEST } from '../../stores/hashtags';
 
 //--------------------------------------------------------
 const loadPosts = createRequestSaga('LOAD_POSTS', loadPostsApi);

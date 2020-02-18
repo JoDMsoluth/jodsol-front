@@ -1,6 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 import produce from 'immer';
-import { createRequestActionTypes } from 'lib/createRequestSaga';
+import { createRequestActionTypes } from '../../lib/createRequestSaga';
 
 export const initialState = {
   todayViews: 0,

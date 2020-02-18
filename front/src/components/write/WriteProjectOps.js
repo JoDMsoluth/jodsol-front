@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import palette from 'lib/styles/palette';
+import palette from '../../lib/styles/palette';
 import { useRouteMatch } from 'react-router-dom';
 
-export default function WriteProjectOps({}) {
+export default function WriteProjectOps() {
   const match = useRouteMatch();
   const { category } = match.params;
 

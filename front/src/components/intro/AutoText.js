@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
-import Typed from "typed.js";
-import palette from "lib/styles/palette";
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import Typed from 'typed.js';
+import palette from '../../lib/styles/palette';
 
 const AutoText = ({ strings }) => {
   useEffect(() => {
     const options = {
-      strings: strings,
+      strings,
       typeSpeed: 50,
-      backSpeed: 50
+      backSpeed: 50,
     };
-    const startElement = document.querySelector(".type-content");
+    const startElement = document.querySelector('.type-content');
     const typed = new Typed(startElement, options);
 
     return () => {
@@ -23,7 +23,7 @@ const AutoText = ({ strings }) => {
       <AutoTextTitle>JOB WANTED</AutoTextTitle>
       <div>Hi, I'm Hyehyeong Jo</div>
       <div className="type-wrap">
-        <span className="type-content" style={{ whiteSpace: "pre" }}></span>
+        <span className="type-content" style={{ whiteSpace: 'pre' }} />
       </div>
     </AutoTextWrap>
   );

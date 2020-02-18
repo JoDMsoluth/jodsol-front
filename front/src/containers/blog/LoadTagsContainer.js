@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import qs from "qs";
-import { withRouter } from "react-router-dom";
-import { loadHashtags, unloadHashtags } from "modules/stores/hashtags";
-import TagsCardList from "components/blog/postsList/TagsCardList";
-import Pagination from "components/common/pagination/Pagination";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import qs from 'qs';
+import { withRouter } from 'react-router-dom';
+import { loadHashtags, unloadHashtags } from '../../modules/stores/hashtags';
+import TagsCardList from '../../components/blog/postsList/TagsCardList';
+import Pagination from '../../components/common/pagination/Pagination';
 
 const LoadtagsContainer = ({ location, match }) => {
   const dispatch = useDispatch();
@@ -12,13 +12,13 @@ const LoadtagsContainer = ({ location, match }) => {
     ({ hashtags, loading }) => ({
       tags: hashtags.tags,
       tagsError: hashtags.tagsError,
-      loading: loading["LOAD_HASHTAGS"],
-      lastPage: hashtags.lastPage
-    })
+      loading: loading['LOAD_HASHTAGS'],
+      lastPage: hashtags.lastPage,
+    }),
   );
 
   const { page, tag } = qs.parse(location.search, {
-    ignoreQueryPrefix: true
+    ignoreQueryPrefix: true,
   });
   const { category, filter } = match.params;
   useEffect(() => {
@@ -26,8 +26,8 @@ const LoadtagsContainer = ({ location, match }) => {
       loadHashtags({
         tag,
         page,
-        category
-      })
+        category,
+      }),
     );
     return () => {
       dispatch(unloadHashtags());

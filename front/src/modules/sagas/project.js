@@ -1,5 +1,5 @@
 import { all, fork, takeEvery } from 'redux-saga/effects';
-import createRequestSaga from 'lib/createRequestSaga';
+import createRequestSaga from '../../lib/createRequestSaga';
 import {
   addProjectApi,
   deleteProjectApi,

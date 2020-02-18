@@ -19,13 +19,15 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 
 function build() {
   console.log('Creating server build...');
-  let compiler = webpack(config);
-  compiler.run((err, stats) => {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    console.log(stats.toString());
+  const compiler = webpack(config);
+  return new Promise(() => {
+    compiler.run((err, stats) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      console.log(stats.toString());
+    });
   });
 }
 

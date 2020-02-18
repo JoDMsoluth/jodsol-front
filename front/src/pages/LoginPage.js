@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import LoginFormContainer from 'containers/login/LoginFormContainer';
+import LoginFormContainer from '../containers/login/LoginFormContainer';
 
 const LoginPage = () => {
   return (
     <>
       <LoginLayoutWrap>
-        <LoginFormContainer></LoginFormContainer>
+        <LoginFormContainer />
       </LoginLayoutWrap>
     </>
   );

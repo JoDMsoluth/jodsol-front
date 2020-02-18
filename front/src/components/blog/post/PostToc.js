@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import smoothScrollTo from 'lib/scrollTo';
-import palette from 'lib/styles/palette';
-import font from 'lib/styles/font';
+import smoothScrollTo from '../../../lib/scrollTo';
+import palette from '../../../lib/styles/palette';
+import font from '../../../lib/styles/font';
 import PropTypes from 'prop-types';
 
 export default function PostToc({ toc, activeHeading, onActiveHeading }) {

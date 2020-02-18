@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import CustomButton from "lib/CustomButton";
-import PrintResume from "lib/PrintResume";
-import palette from "lib/styles/palette";
-import arrange from "lib/styles/arrage";
-import ResumeContent from "./ResumeContent";
+import React from 'react';
+import styled from 'styled-components';
+import CustomButton from '../../../lib/CustomButton';
+import PrintResume from '../../../lib/PrintResume';
+import palette from '../../../lib/styles/palette';
+import arrange from '../../../lib/styles/arrage';
+import ResumeContent from './ResumeContent';
 
 export default function Resume() {
   return (

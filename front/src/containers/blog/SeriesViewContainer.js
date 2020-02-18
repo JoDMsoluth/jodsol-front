@@ -5,16 +5,16 @@ import {
   unloadSeries,
   setSeriesToc,
   setSeriesActiveHeading,
-} from 'modules/stores/series';
+} from '../../modules/stores/series';
 import { useDispatch, useSelector } from 'react-redux';
 import throttle from 'lodash/throttle';
 
 import styled from 'styled-components';
-import MarkdownRender from 'components/common/markdown/MarkdownRender';
-import palette from 'lib/styles/palette';
-import thumbnail from 'statics/images/kickVillageProject.PNG';
-import SeriesPostsList from 'components/blog/postsList/SereisPostsList';
-import PostToc from 'components/blog/post/PostToc';
+import MarkdownRender from '../../components/common/markdown/MarkdownRender';
+import palette from '../../lib/styles/palette';
+import thumbnail from '../../statics/images/kickVillageProject.PNG';
+import SeriesPostsList from '../../components/blog/postsList/SereisPostsList';
+import PostToc from '../../components/blog/post/PostToc';
 
 const SeriesViewContainer = () => {
   const match = useRouteMatch();

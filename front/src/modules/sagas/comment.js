@@ -1,5 +1,5 @@
-import { all, fork, takeEvery } from "redux-saga/effects";
-import createRequestSaga from "lib/createRequestSaga";
+import { all, fork, takeEvery } from 'redux-saga/effects';
+import createRequestSaga from '../../lib/createRequestSaga';
 import {
   addCommentApi,
   deleteCommentApi,
@@ -7,8 +7,8 @@ import {
   loadCommentsApi,
   addRecommentApi,
   deleteRecommentApi,
-  updateRecommentApi
-} from "./apis/comment";
+  updateRecommentApi,
+} from './apis/comment';
 import {
   ADD_COMMENT_REQUEST,
   DELETE_COMMENT_REQUEST,
@@ -17,20 +17,20 @@ import {
   ADD_RECOMMENT_REQUEST,
   DELETE_RECOMMENT_REQUEST,
   UPDATE_RECOMMENT_REQUEST,
-} from "../stores/comment";
+} from '../stores/comment';
 //--------------------------------------------------------
-const addComment = createRequestSaga("ADD_COMMENT", addCommentApi);
-const deleteComment = createRequestSaga("DELETE_COMMENT", deleteCommentApi);
-const updateComment = createRequestSaga("UPDATE_COMMENT", updateCommentApi);
-const loadComments = createRequestSaga("LOAD_COMMENTS", loadCommentsApi);
-const addRecomment = createRequestSaga("ADD_RECOMMENT", addRecommentApi);
+const addComment = createRequestSaga('ADD_COMMENT', addCommentApi);
+const deleteComment = createRequestSaga('DELETE_COMMENT', deleteCommentApi);
+const updateComment = createRequestSaga('UPDATE_COMMENT', updateCommentApi);
+const loadComments = createRequestSaga('LOAD_COMMENTS', loadCommentsApi);
+const addRecomment = createRequestSaga('ADD_RECOMMENT', addRecommentApi);
 const deleteRecomment = createRequestSaga(
-  "DELETE_RECOMMENT",
-  deleteRecommentApi
+  'DELETE_RECOMMENT',
+  deleteRecommentApi,
 );
 const updateRecomment = createRequestSaga(
-  "UPDATE_RECOMMENT",
-  updateRecommentApi
+  'UPDATE_RECOMMENT',
+  updateRecommentApi,
 );
 //---------------------------------------------
 

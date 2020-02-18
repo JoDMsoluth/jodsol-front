@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import uncleSam from "statics/images/uncleSam.png";
+import React from 'react';
+import styled from 'styled-components';
+import uncleSam from '../../statics/images/uncleSam.png';
 
 const IntroBackground = () => {
   return (

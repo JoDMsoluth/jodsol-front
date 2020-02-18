@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import palette from 'lib/styles/palette';
-import font from 'lib/styles/font';
+import palette from '../../../lib/styles/palette';
+import font from '../../../lib/styles/font';
 import Cookies from 'js-cookie';
 import moment from 'moment';
 import { useRouteMatch } from 'react-router-dom';

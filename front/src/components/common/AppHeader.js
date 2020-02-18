@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link, useRouteMatch } from 'react-router-dom';
-import transition from 'lib/styles/transition';
-import palette from 'lib/styles/palette';
-import font from 'lib/styles/font';
-import logo from 'statics/images/logo.png';
-import Avatar from 'statics/images/Avatar.jpg';
-import arrange from 'lib/styles/arrage';
+import transition from '../../lib/styles/transition';
+import palette from '../../lib/styles/palette';
+import font from '../../lib/styles/font';
+import logo from '../../statics/images/logo.png';
+import Avatar from '../../statics/images/Avatar.jpg';
+import arrange from '../../lib/styles/arrage';
 
 const AppHeader = () => {
   const match = useRouteMatch();

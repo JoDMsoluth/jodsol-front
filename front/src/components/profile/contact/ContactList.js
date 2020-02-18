@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import arrange from "lib/styles/arrage";
-import palette from "lib/styles/palette";
-import font from "lib/styles/font";
+import React from 'react';
+import styled from 'styled-components';
+import arrange from '../../../lib/styles/arrage';
+import palette from '../../../lib/styles/palette';
+import font from '../../../lib/styles/font';
 
 export function ContactList() {
   return (

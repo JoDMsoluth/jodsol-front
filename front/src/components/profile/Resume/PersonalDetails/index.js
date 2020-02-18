@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import palette from "lib/styles/palette";
-import BasicInfo from "./BasicInfo";
-import Objective from "./Objective";
-import ContactInfo from "./ContactInfo";
-import Education from "./Education";
+import React from 'react';
+import styled from 'styled-components';
+import palette from '../../../../lib/styles/palette';
+import BasicInfo from './BasicInfo';
+import Objective from './Objective';
+import ContactInfo from './ContactInfo';
+import Education from './Education';
 
 export default function PersonalDetails() {
   return (

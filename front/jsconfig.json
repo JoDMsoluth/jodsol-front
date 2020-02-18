@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "module": "es2015",
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
       "*": ["*", "src/*"]
     }

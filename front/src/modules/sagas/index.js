@@ -1,10 +1,10 @@
 import { all, fork } from 'redux-saga/effects';
-import posts from 'modules/sagas/posts';
-import post from 'modules/sagas/post';
-import comment from 'modules/sagas/comment';
-import series from 'modules/sagas/series';
-import utils from 'modules/sagas/utils';
-import project from 'modules/sagas/project';
+import posts from './posts';
+import post from './post';
+import comment from './comment';
+import series from './series';
+import utils from './utils';
+import project from './project';
 
 export default function* rootSaga() {
   yield all([

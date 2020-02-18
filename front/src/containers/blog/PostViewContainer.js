@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useRouteMatch, Link } from 'react-router-dom';
 import {
   loadPost,
   unloadPost,
@@ -7,16 +7,15 @@ import {
   setActiveHeading,
   likePost,
   unlikePost,
-} from 'modules/stores/post';
+} from '../../modules/stores/post';
 import { useDispatch, useSelector } from 'react-redux';
 import throttle from 'lodash/throttle';
 import styled from 'styled-components';
-import palette from 'lib/styles/palette';
-import { Link } from 'react-router-dom';
-import MarkdownRender from 'components/common/markdown/MarkdownRender';
-import PostToc from 'components/blog/post/PostToc';
-import thumbnail from 'statics/images/kickVillageProject.PNG';
-import PostHeader from 'components/blog/post/PostHeader';
+import palette from '../../lib/styles/palette';
+import MarkdownRender from '../../components/common/markdown/MarkdownRender';
+import PostToc from '../../components/blog/post/PostToc';
+import thumbnail from '../../statics/images/kickVillageProject.PNG';
+import PostHeader from '../../components/blog/post/PostHeader';
 
 const PostViewContainer = () => {
   const match = useRouteMatch();
@@ -99,8 +98,11 @@ const PostViewContainer = () => {
           {tags.map((tag, i) => (
             <Link
               to={`/blog/${category}?tag=${tag.slice(1, tag.length)}&page=1`}
+              // eslint-disable-next-line react/no-array-index-key
               key={`${tag}${i}`}
-            >{`${tag} `}</Link>
+            >
+              {`${tag} `}
+            </Link>
           ))}
         </PostViewTags>
       </PostViewWrap>

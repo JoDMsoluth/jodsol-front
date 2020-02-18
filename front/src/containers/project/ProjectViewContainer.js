@@ -1,10 +1,10 @@
 import React, { useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { useRouteMatch } from 'react-router-dom';
-import { loadProjectPosts, unloadProejct } from 'modules/stores/project';
-import palette from 'lib/styles/palette';
+import { loadProjectPosts, unloadProejct } from '../../modules/stores/project';
+import palette from '../../lib/styles/palette';
 import { useDispatch, useSelector } from 'react-redux';
-import SlideRender from 'components/project/view/SlideRender';
+import SlideRender from '../../components/project/view/SlideRender';
 
 const ProjectViewContainer = () => {
   const match = useRouteMatch();

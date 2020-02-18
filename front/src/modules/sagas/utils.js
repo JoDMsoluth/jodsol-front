@@ -1,10 +1,10 @@
 import { all, fork, takeEvery } from 'redux-saga/effects';
-import createRequestSaga from 'lib/createRequestSaga';
+import createRequestSaga from '../../lib/createRequestSaga';
 import {
   LOAD_VIEWS_REQUEST,
   SEND_MAIL_REQUEST,
   ADMIN_LOGIN_REQUEST,
-} from 'modules/stores/utils';
+} from '../stores/utils';
 import { loadViewsApi, sendMailApi, adminLoginApi } from './apis/utils';
 
 //--------------------------------------------------------

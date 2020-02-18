@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadViews, unloadViews } from 'modules/stores/utils';
-import BlogHeader from 'components/common/header';
+import { loadViews, unloadViews } from '../../modules/stores/utils';
+import BlogHeader from '../../components/common/header';
 
 const BlogHeaderContainer = () => {
   const dispatch = useDispatch();

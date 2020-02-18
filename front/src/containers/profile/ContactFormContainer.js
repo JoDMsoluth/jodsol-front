@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { initialMail } from 'modules/stores/utils';
-import ContactForm from 'components/profile/contact/ContactForm';
+import { initialMail } from '../../modules/stores/utils';
+import ContactForm from '../../components/profile/contact/ContactForm';
 
 const ContactFormContainer = () => {
   const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import palette from 'lib/styles/palette';
-import { INITIALIZE } from 'modules/stores/write';
+import palette from '../../lib/styles/palette';
+import { INITIALIZE } from '../../modules/stores/write';
 import { useDispatch } from 'react-redux';
 
 const EditTemplate = ({ header, editor, preview }) => {

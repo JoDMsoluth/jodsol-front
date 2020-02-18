@@ -1,13 +1,13 @@
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
-import font from 'lib/styles/font';
-import palette from 'lib/styles/palette';
-import { InputSpan, InputContainer } from 'lib/styles/inputStyle';
-import 'statics/css/icon.css';
-import CustomButton from 'lib/CustomButton';
-import arrange from 'lib/styles/arrage';
+import font from '../../../lib/styles/font';
+import palette from '../../../lib/styles/palette';
+import { InputSpan, InputContainer } from '../../../lib/styles/inputStyle';
+import '../../../statics/css/icon.css';
+import CustomButton from '../../../lib/CustomButton';
+import arrange from '../../../lib/styles/arrage';
 import { useDispatch } from 'react-redux';
-import { sendMail } from 'modules/stores/utils';
+import { sendMail } from '../../../modules/stores/utils';
 
 export default function ContactForm({ mailResult }) {
   const useInput = (initialValue = null) => {

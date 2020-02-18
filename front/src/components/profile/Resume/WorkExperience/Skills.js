@@ -1,14 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import reactLogo from "statics/images/react.PNG";
-import htmlLogo from "statics/images/html.png";
-import reduxLogo from "statics/images/redux.PNG";
-import typescriptLogo from "statics/images/typescript.PNG";
-import nodeLogo from "statics/images/node.PNG";
-import mysqlLogo from "statics/images/mysql.png";
-import mongodbLogo from "statics/images/mongodb.png";
-import gitLogo from "statics/images/git.PNG";
-import palette from "lib/styles/palette";
+import React from 'react';
+import styled from 'styled-components';
+import reactLogo from '../../../../statics/images/react.PNG';
+import htmlLogo from '../../../../statics/images/html.png';
+import reduxLogo from '../../../../statics/images/redux.PNG';
+import typescriptLogo from '../../../../statics/images/typescript.PNG';
+import nodeLogo from '../../../../statics/images/node.PNG';
+import mysqlLogo from '../../../../statics/images/mysql.png';
+import mongodbLogo from '../../../../statics/images/mongodb.png';
+import gitLogo from '../../../../statics/images/git.PNG';
+import palette from '../../../../lib/styles/palette';
 
 export default function Skills() {
   return (
@@ -16,14 +16,14 @@ export default function Skills() {
       <Title>Skills</Title>
       <ContentWrap>
         <Content>
-          <div style={{ marginBottom: "0.6rem" }}>Frontend</div>
+          <div style={{ marginBottom: '0.6rem' }}>Frontend</div>
           <LogoWrap>
             <SkillsLogo
               src={htmlLogo}
               alt="htmlLogo"
               width="50px"
               height="50px"
-            ></SkillsLogo>
+            />
             <SkillsDesc>{`HTML\nCSS\nJS`}</SkillsDesc>
           </LogoWrap>
           <LogoWrap>
@@ -32,7 +32,7 @@ export default function Skills() {
               alt="reactLogo"
               width="50px"
               height="50px"
-            ></SkillsLogo>
+            />
             <SkillsDesc>React</SkillsDesc>
           </LogoWrap>
           <LogoWrap>
@@ -41,7 +41,7 @@ export default function Skills() {
               alt="reduxLogo"
               width="50px"
               height="50px"
-            ></SkillsLogo>
+            />
             <SkillsDesc>Redux</SkillsDesc>
           </LogoWrap>
           <LogoWrap>
@@ -50,19 +50,19 @@ export default function Skills() {
               alt="typescriptLogo"
               width="50px"
               height="50px"
-            ></SkillsLogo>
+            />
             <SkillsDesc>{`Type\nscript`}</SkillsDesc>
           </LogoWrap>
         </Content>
         <Content>
-          <div style={{ marginBottom: "0.6rem" }}>Backend</div>
+          <div style={{ marginBottom: '0.6rem' }}>Backend</div>
           <LogoWrap>
             <SkillsLogo
               src={nodeLogo}
               alt="nodeLogo"
               width="50px"
               height="50px"
-            ></SkillsLogo>
+            />
             <SkillsDesc>Node</SkillsDesc>
           </LogoWrap>
           <LogoWrap>
@@ -71,7 +71,7 @@ export default function Skills() {
               alt="mongodbLogo"
               width="50px"
               height="50px"
-            ></SkillsLogo>
+            />
             <SkillsDesc>{`Mongo\nDB`}</SkillsDesc>
           </LogoWrap>
           <LogoWrap>
@@ -80,19 +80,19 @@ export default function Skills() {
               alt="mysqlLogo"
               width="50px"
               height="50px"
-            ></SkillsLogo>
+            />
             <SkillsDesc>MySQL</SkillsDesc>
           </LogoWrap>
         </Content>
         <Content>
-          <div style={{ marginBottom: "0.6rem" }}>Devops</div>
+          <div style={{ marginBottom: '0.6rem' }}>Devops</div>
           <LogoWrap>
             <SkillsLogo
               src={gitLogo}
               alt="gitLogo"
               width="50px"
               height="50px"
-            ></SkillsLogo>
+            />
             <SkillsDesc>Git</SkillsDesc>
           </LogoWrap>
         </Content>

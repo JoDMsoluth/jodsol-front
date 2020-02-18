@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import palette from 'lib/styles/palette';
+import palette from '../../../lib/styles/palette';
 import { Link, withRouter } from 'react-router-dom';
 
 const BlogNavBar = ({ match, location }) => {

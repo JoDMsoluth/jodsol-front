@@ -1,5 +1,5 @@
 import { all, fork, takeEvery } from 'redux-saga/effects';
-import createRequestSaga from 'lib/createRequestSaga';
+import createRequestSaga from '../../lib/createRequestSaga';
 import {
   addPostApi,
   deletePostApi,
@@ -17,7 +17,7 @@ import {
   LIKE_POST_REQUEST,
   UNLIKE_POST_REQUEST,
 } from '../stores/post';
-import { UPLOAD_THUMBNAIL_REQUEST } from 'modules/stores/write';
+import { UPLOAD_THUMBNAIL_REQUEST } from '../stores/write';
 
 //--------------------------------------------------------
 const addPost = createRequestSaga('ADD_POST', addPostApi);

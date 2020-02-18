@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import palette from "lib/styles/palette";
-import font from "lib/styles/font";
+import React from 'react';
+import styled from 'styled-components';
+import palette from '../../../lib/styles/palette';
+import font from '../../../lib/styles/font';
 
 export default function ProfileComponentLayout({ id, title, children }) {
   return (

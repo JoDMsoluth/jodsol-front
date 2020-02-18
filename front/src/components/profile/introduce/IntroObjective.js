@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import palette from "lib/styles/palette";
+import React from 'react';
+import styled from 'styled-components';
+import palette from '../../../lib/styles/palette';
 
 export default function IntroObjective() {
   return (

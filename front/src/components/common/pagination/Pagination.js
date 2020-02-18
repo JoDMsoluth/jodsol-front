@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import qs from 'qs';
 import { Link } from 'react-router-dom';
-import palette from 'lib/styles/palette';
-import font from 'lib/styles/font';
+import palette from '../../../lib/styles/palette';
+import font from '../../../lib/styles/font';
 import PropTypes from 'prop-types';
 
 Pagination.propTypes = {

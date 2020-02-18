@@ -1,13 +1,12 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useEffect } from 'react';
 import styled, { css } from 'styled-components';
-import palette from 'lib/styles/palette';
+import palette from '../../lib/styles/palette';
 import { useDispatch } from 'react-redux';
 import WritePostOps from './WritePostOps';
-import { changeInput, uploadThumbnail } from 'modules/stores/write';
-import { center } from 'lib/styles/arrage';
+import { changeInput, uploadThumbnail } from '../../modules/stores/write';
+import { center } from '../../lib/styles/arrage';
 import { useRouteMatch } from 'react-router-dom';
-import CustomButton from 'lib/CustomButton';
-import { useEffect } from 'react';
+import CustomButton from '../../lib/CustomButton';
 import WriteSeriesOps from './WriteSeriesOps';
 
 export default function WriteOpsPanel({
@@ -75,6 +74,7 @@ export default function WriteOpsPanel({
     ) : filter === 'series' ? (
       <WriteSeriesOps />
     ) : filter === 'project' ? (
+      // eslint-disable-next-line react/jsx-no-undef
       <WriteProjectOps />
     ) : null;
 

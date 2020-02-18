@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import palette from "lib/styles/palette";
-import { InputSpan } from "lib/styles/inputStyle";
-import "statics/css/icon.css";
-import CustomButton from "lib/CustomButton";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import palette from '../../../lib/styles/palette';
+import { InputSpan } from '../../../lib/styles/inputStyle';
+import '../../../statics/css/icon.css';
+import CustomButton from '../../../lib/CustomButton';
 
 export default function DeleteQuestion({
   id,
@@ -11,9 +11,9 @@ export default function DeleteQuestion({
   setToggleQustion,
   deleteComment,
   deleteRecomment,
-  reply
+  reply,
 }) {
-  const [password, setPassowrd] = useState("");
+  const [password, setPassowrd] = useState('');
   const onChangePassword = e => {
     setPassowrd(e.target.value);
   };

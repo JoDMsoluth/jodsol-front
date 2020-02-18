@@ -1,8 +1,8 @@
 import React, { useCallback, useState, useRef, useEffect } from 'react';
 import styled, { css } from 'styled-components';
-import palette from 'lib/styles/palette';
+import palette from '../../../lib/styles/palette';
 import { useRouteMatch, useHistory } from 'react-router-dom';
-import { parseSearching } from 'lib/parseSearching';
+import { parseSearching } from '../../../lib/parseSearching';
 
 export default function SearchBar() {
   const [searchText, setSearchText] = useState('');

@@ -10,8 +10,8 @@ import {
   addRecomment,
   deleteRecomment,
   updateRecomment,
-} from 'modules/stores/comment';
-import CommentsList from 'components/blog/comments/CommentsList';
+} from '../../modules/stores/comment';
+import CommentsList from '../../components/blog/comments/CommentsList';
 
 const CommentsListContainer = () => {
   const match = useRouteMatch();

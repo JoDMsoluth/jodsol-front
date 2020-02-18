@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import CustomButton from 'lib/CustomButton';
+import CustomButton from '../../lib/CustomButton';
 import { withRouter } from 'react-router-dom';
-import palette from 'lib/styles/palette';
-import transitions from 'lib/styles/transition';
+import palette from '../../lib/styles/palette';
+import transitions from '../../lib/styles/transition';
 
 const ContactMeButton = ({ history }) => {
   return (

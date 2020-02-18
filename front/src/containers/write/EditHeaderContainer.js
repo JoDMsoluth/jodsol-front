@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import EditorHeader from 'components/write/EditorHeader';
+import EditorHeader from '../../components/write/EditorHeader';
 import { withRouter } from 'react-router-dom';
-import { addPost } from 'modules/stores/post';
-import { addSeries } from 'modules/stores/series';
-import { addProejct } from 'modules/stores/project';
+import { addPost } from '../../modules/stores/post';
+import { addSeries } from '../../modules/stores/series';
+import { addProejct } from '../../modules/stores/project';
 
 const EditorHeaderContainer = ({ history, match }) => {
   const { title, tags, markdown, desc, coverImg } = useSelector(

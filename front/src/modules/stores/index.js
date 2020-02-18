@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux';
-import post from 'modules/stores/post';
-import posts from 'modules/stores/posts';
-import write from 'modules/stores/write';
-import loading from 'modules/stores/loading';
-import comment from 'modules/stores/comment';
-import hashtags from 'modules/stores/hashtags';
-import series from 'modules/stores/series';
-import utils from 'modules/stores/utils';
-import project from 'modules/stores/project';
+import post from './post';
+import posts from './posts';
+import write from './write';
+import loading from './loading';
+import comment from './comment';
+import hashtags from './hashtags';
+import series from './series';
+import utils from './utils';
+import project from './project';
 
 export default combineReducers({
   comment,

@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
-import CustomButton from 'lib/CustomButton';
-import palette from 'lib/styles/palette';
+import CustomButton from '../../lib/CustomButton';
+import palette from '../../lib/styles/palette';
 import WirteOpsPanel from './WriteOpsPanel';
 
 export default function EditHeader({

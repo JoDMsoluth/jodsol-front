@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Deck, MarkdownSlides } from 'spectacle';
 import createTheme from 'spectacle/lib/themes/default';
-import palette from 'lib/styles/palette';
+import palette from '../../../lib/styles/palette';
 
 const theme = createTheme(
   {

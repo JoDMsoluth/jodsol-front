@@ -1,15 +1,13 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
-import font from 'lib/styles/font';
-import palette from 'lib/styles/palette';
-import arrange from 'lib/styles/arrage';
-import 'statics/css/icon.css';
-import CustomButton from 'lib/CustomButton';
-import { InputSpan, InputContainer } from 'lib/styles/inputStyle';
+import font from '../../lib/styles/font';
+import palette from '../../lib/styles/palette';
+import arrange from '../../lib/styles/arrage';
+import '../../statics/css/icon.css';
+import CustomButton from '../../lib/CustomButton';
+import { InputSpan, InputContainer } from '../../lib/styles/inputStyle';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
-import { useCallback } from 'react';
-import { adminLogin } from 'modules/stores/utils';
+import { adminLogin } from '../../modules/stores/utils';
 
 const LoginFormContainer = () => {
   const dispatch = useDispatch();

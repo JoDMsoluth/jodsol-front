@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import palette from 'lib/styles/palette';
+import palette from '../../../lib/styles/palette';
 import PropTypes from 'prop-types';
-import kickVillageProjectImg from 'statics/images/kickVillageProject.PNG';
+import kickVillageProjectImg from '../../../statics/images/kickVillageProject.PNG';
 import { Link } from 'react-router-dom';
 
 export default function ProjectCard({ project }) {

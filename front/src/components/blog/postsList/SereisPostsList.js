@@ -1,8 +1,8 @@
 import React from 'react';
 import SeriesPostsCard from './SeriesPostsCard';
 import styled from 'styled-components';
-import CustomButton from 'lib/CustomButton';
-import palette from 'lib/styles/palette';
+import CustomButton from '../../../lib/CustomButton';
+import palette from '../../../lib/styles/palette';
 import { Link, useRouteMatch } from 'react-router-dom';
 
 export default function SeriesPostsList({ posts, category }) {

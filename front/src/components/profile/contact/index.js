@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import styled, { css } from "styled-components";
-import font from "lib/styles/font";
-import palette from "lib/styles/palette";
-import transitions from "lib/styles/transition";
-import ContactForm from "./ContactForm";
-import { ContactCover } from "./ContactCover";
-import { ContactList } from "./ContactList";
-import ProfileComponentLayout from "../common/ProfileComponentLayout";
+import React, { useState } from 'react';
+import styled, { css } from 'styled-components';
+import font from '../../../lib/styles/font';
+import palette from '../../../lib/styles/palette';
+import transitions from '../../../lib/styles/transition';
+import ContactForm from './ContactForm';
+import { ContactCover } from './ContactCover';
+import { ContactList } from './ContactList';
+import ProfileComponentLayout from '../common/ProfileComponentLayout';
 
 export default function ProfileContact() {
   const [flip, setFlip] = useState(false);

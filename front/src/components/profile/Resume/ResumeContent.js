@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import font from "lib/styles/font";
-import PersonalDetails from "./PersonalDetails";
-import WorkExperience from "./WorkExperience";
+import React from 'react';
+import styled from 'styled-components';
+import font from '../../../lib/styles/font';
+import PersonalDetails from './PersonalDetails';
+import WorkExperience from './WorkExperience';
 
 export default function ResumeContent() {
   return (

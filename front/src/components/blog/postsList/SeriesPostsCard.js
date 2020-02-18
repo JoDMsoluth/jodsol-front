@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import palette from 'lib/styles/palette';
+import palette from '../../../lib/styles/palette';
 import { Link, withRouter } from 'react-router-dom';
-import thumbnail from 'statics/images/kickVillageProject.PNG';
-import formatDate from 'lib/dateFormat';
+import thumbnail from '../../../statics/images/kickVillageProject.PNG';
+import formatDate from '../../../lib/dateFormat';
 
 const SeriesPostsCard = ({ post }) => {
   const { _id, title, updatedAt, markdown, tags, likes, coverImg } = post;

@@ -1,48 +1,73 @@
-const path = require('path');
-const webpack = require('webpack');
-const paths = require('./paths');
-const getClientEnvironment = require('./env');
-const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const nodeExternals = require('webpack-node-externals');
+const paths = require('./paths');
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
+const webpack = require('webpack');
+const getClientEnvironment = require('./env');
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
+const sassRegex = /\.(scss|sass)$/;
+const sassModuleRegex = /\.module\.(scss|sass)$/;
+const path = require('path');
 
-const publicPath = paths.servedPath;
-const publicUrl = publicPath.slice(0, -1);
+const imageInlineSizeLimit = parseInt(
+  process.env.IMAGE_INLINE_SIZE_LIMIT || '10000',
+);
+
+const publicUrl = paths.servedPath.slice(0, -1);
 const env = getClientEnvironment(publicUrl);
 
 module.exports = {
   mode: 'production',
-  entry: paths.ssrEntry,
+  entry: paths.ssrIndexJs,
   target: 'node',
   output: {
     path: paths.ssrBuild,
-    filename: 'render.js',
-    libraryTarget: 'commonjs2',
+    filename: 'server.js',
+    publicPath: paths.servedPath,
   },
   module: {
     rules: [
       {
         oneOf: [
           {
-            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.PNG$/],
+            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
             loader: require.resolve('url-loader'),
             options: {
-              limit: 10000,
+              limit: imageInlineSizeLimit,
+              name: 'static/media/[name].[hash:8].[ext]',
               emitFile: false,
-              name: 'static/image/[name].[hash:8].[ext]',
             },
           },
           {
-            test: /\.(js|jsx|mjs)$/,
+            test: /\.(js|mjs|jsx|ts|tsx)$/,
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              compact: true,
-              cacheDirectory: true, // build를 빠르게 하기 위해 전에 build 했다면 캐쉬로 저장함
+              customize: require.resolve(
+                'babel-preset-react-app/webpack-overrides',
+              ),
+
+              plugins: [
+                [
+                  require.resolve('babel-plugin-named-asset-import'),
+                  {
+                    loaderMap: {
+                      svg: {
+                        ReactComponent:
+                          '@svgr/webpack?-svgo,+titleProp,+ref![path]',
+                      },
+                    },
+                  },
+                ],
+              ],
+              cacheDirectory: true,
+              cacheCompression: false,
+              compact: false,
             },
           },
           {
-            test: /\.css$/,
-            exclude: /\.module\.css$/,
+            test: cssRegex,
+            exclude: cssModuleRegex,
             loader: require.resolve('css-loader'),
             options: {
               onlyLocals: true,
@@ -51,7 +76,7 @@ module.exports = {
           // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
           // using the extension .module.css
           {
-            test: /\.module\.css$/,
+            test: cssModuleRegex,
             loader: require.resolve('css-loader'),
             options: {
               onlyLocals: true,
@@ -60,8 +85,8 @@ module.exports = {
             },
           },
           {
-            test: /\.(scss|sass)$/,
-            exclude: /\.module\.(scss|sass)$/,
+            test: sassRegex,
+            exclude: sassModuleRegex,
             use: [
               {
                 loader: require.resolve('css-loader'),
@@ -73,7 +98,7 @@ module.exports = {
             ],
           },
           {
-            test: /\.module\.(scss|sass)$/,
+            test: sassModuleRegex,
             use: [
               {
                 loader: require.resolve('css-loader'),
@@ -87,12 +112,15 @@ module.exports = {
             ],
           },
           {
-            test: /\.(PNG|png|jpe?g|gif)$/i,
-            exclude: [/\.js$/, /\.html$/, /\.json$/],
             loader: require.resolve('file-loader'),
+            // Exclude `js` files to keep "css" loader working as it injects
+            // its runtime that would otherwise be processed through "file" loader.
+            // Also exclude `html` and `json` extensions so they get processed
+            // by webpacks internal loaders.
+            exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
             options: {
-              emitFile: false, // 파일은 따로 만들지 않음.. s3에 저장하기 때문
-              name: 'static/image/[name].[hash:8].[ext]',
+              emitFile: false,
+              name: 'static/media/[name].[hash:8].[ext]',
             },
           },
         ],
@@ -100,14 +128,28 @@ module.exports = {
     ],
   },
   resolve: {
-    modules: ['node_modules', paths.appNodeModules].concat(
-      // It is guaranteed to exist because we tweak it in `env.js`
-      process.env.NODE_PATH.split(path.delimiter).filter(Boolean),
-    ),
+    modules: ['node_modules'],
+    extensions: paths.moduleFileExtensions
+      .map(ext => `.${ext}`)
+      .filter(ext => true || !ext.includes('ts')),
   },
-  externals: [nodeExternals()],
   plugins: [
     new webpack.DefinePlugin(env.stringified),
-    new webpack.NormalModuleReplacementPlugin(/hello/, 'fakeModule'),
+    new webpack.NormalModuleReplacementPlugin(
+      /codemirror/,
+      path.resolve(paths.appSrc, 'lib/replacedModule.ts'),
+    ),
+    new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
   ],
+  optimization: {
+    minimize: false,
+  },
+  externals: [
+    nodeExternals({
+      whitelist: [/codemirror/, /\.css$/],
+    }),
+  ],
+  node: {
+    __dirname: false,
+  },
 };

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { loadProject, unloadProejct } from 'modules/stores/project';
-import ProjectList from 'components/project/posts/ProjectList';
+import { loadProject, unloadProejct } from '../../modules/stores/project';
+import ProjectList from '../../components/project/posts/ProjectList';
 import { useRouteMatch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 

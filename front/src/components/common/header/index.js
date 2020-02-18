@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import font from 'lib/styles/font';
-import palette from 'lib/styles/palette';
+import font from '../../../lib/styles/font';
+import palette from '../../../lib/styles/palette';
 import { withRouter } from 'react-router-dom';
 
 const Header = ({ match, todayViews, totalViews }) => {

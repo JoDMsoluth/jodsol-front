@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import palette from 'lib/styles/palette';
+import palette from '../../../lib/styles/palette';
 import DeleteQuestion from './DeleteQuestion';
-import dateFormat from 'lib/dateFormat';
+import dateFormat from '../../../lib/dateFormat';
 
 export default function CommentContent({
   comment,

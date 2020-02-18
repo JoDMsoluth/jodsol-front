@@ -1,28 +1,28 @@
-import React from "react";
-import styled from "styled-components";
-import SkillCard from "./SkillCard";
-import frontEndImg from "statics/images/front.PNG";
-import backEndImg from "statics/images/back.PNG";
-import devOpsImg from "statics/images/devops.PNG";
-import ProfileComponentLayout from "../common/ProfileComponentLayout";
-import ProjectList from "./ProjectList";
+import React from 'react';
+import styled from 'styled-components';
+import SkillCard from './SkillCard';
+import frontEndImg from '../../../statics/images/front.PNG';
+import backEndImg from '../../../statics/images/back.PNG';
+import devOpsImg from '../../../statics/images/devops.PNG';
+import ProfileComponentLayout from '../common/ProfileComponentLayout';
+import ProjectList from './ProjectList';
 
 const skillCardContent = [
   {
     frontImg: frontEndImg,
-    frontContent: "Front-End",
-    backContent: ["HTML+CSS+JS", "React+Redux", "Typescript"]
+    frontContent: 'Front-End',
+    backContent: ['HTML+CSS+JS', 'React+Redux', 'Typescript'],
   },
   {
     frontImg: backEndImg,
-    frontContent: "Back-End",
-    backContent: ["NodeJS", "MongoDB", "Mysql"]
+    frontContent: 'Back-End',
+    backContent: ['NodeJS', 'MongoDB', 'Mysql'],
   },
   {
     frontImg: devOpsImg,
-    frontContent: "Dev-Ops",
-    backContent: ["GitHub"]
-  }
+    frontContent: 'Dev-Ops',
+    backContent: ['GitHub'],
+  },
 ];
 
 export default function SkillList() {

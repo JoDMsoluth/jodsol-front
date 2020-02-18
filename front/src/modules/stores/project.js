@@ -1,6 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 import produce from 'immer';
-import { createRequestActionTypes } from 'lib/createRequestSaga';
+import { createRequestActionTypes } from '../../lib/createRequestSaga';
 
 export const initialState = {
   project: null,
@@ -89,6 +89,7 @@ export default handleActions(
       }),
     [ADD_PROJECT_SUCCESS]: (state, action) =>
       produce(state, draft => {
+        // eslint-disable-next-line no-unused-expressions
         draft.project && draft.project.unshift(action.payload);
       }),
     [ADD_PROJECT_FAILURE]: (state, action) =>

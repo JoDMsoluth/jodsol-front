@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import palette from 'lib/styles/palette';
+import palette from '../../../lib/styles/palette';
 import { Link, withRouter } from 'react-router-dom';
-import thumbnail from 'statics/images/kickVillageProject.PNG';
-import dateFormat from 'lib/dateFormat';
-import { convertToPlainText } from 'lib/markdown';
+import thumbnail from '../../../statics/images/kickVillageProject.PNG';
+import dateFormat from '../../../lib/dateFormat';
+import { convertToPlainText } from '../../../lib/markdown';
 
 const BlogContentCard = ({ post }) => {
   const { _id, title, updatedAt, markdown, tags, likes, coverImg } = post;
@@ -16,7 +16,7 @@ const BlogContentCard = ({ post }) => {
     <>
       <ContentCardWrap>
         <Link to={`/post/${_id}`}>
-          <CoverImg coverImg={setCoverImg}></CoverImg>
+          <CoverImg coverImg={setCoverImg} />
         </Link>
         <Content>
           <ContentHead>

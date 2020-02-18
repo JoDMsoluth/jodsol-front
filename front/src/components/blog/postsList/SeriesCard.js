@@ -1,16 +1,12 @@
 import React from 'react';
 import moment from 'moment';
 import styled from 'styled-components';
-import palette from 'lib/styles/palette';
+import palette from '../../../lib/styles/palette';
 import { Link } from 'react-router-dom';
-import thumbnail from 'statics/images/kickVillageProject.PNG';
+import thumbnail from '../../../statics/images/kickVillageProject.PNG';
 import qs from 'qs';
-import CustomButton from 'lib/CustomButton';
+import CustomButton from '../../../lib/CustomButton';
 import PropTypes from 'prop-types';
-
-SeriesCard.propTypes = {
-  series: PropTypes.object,
-};
 
 export default function SeriesCard({ series }) {
   if (!series) {
@@ -49,6 +45,9 @@ export default function SeriesCard({ series }) {
     </>
   );
 }
+SeriesCard.propTypes = {
+  series: PropTypes.object,
+};
 
 const ContentCardWrap = styled.div`
   position: relative;

@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import palette from "lib/styles/palette";
-import CustomButton from "lib/CustomButton";
-import { withRouter } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import palette from '../../../lib/styles/palette';
+import CustomButton from '../../../lib/CustomButton';
+import { withRouter } from 'react-router-dom';
 
 const TagsCard = ({ tag, history, match }) => {
   const { category } = match.params;
@@ -15,7 +15,7 @@ const TagsCard = ({ tag, history, match }) => {
           inline
           onClick={() =>
             history.push(
-              `/blog/${category}?tag=${tag.slice(1, tag.length)}&page=1`
+              `/blog/${category}?tag=${tag.slice(1, tag.length)}&page=1`,
             )
           }
         >

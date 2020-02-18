@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import palette from 'lib/styles/palette';
-import MarkdownPreview from 'components/common/markdown/MarkdownPreview';
+import palette from '../../lib/styles/palette';
+import MarkdownPreview from '../common/markdown/MarkdownPreview';
 
 export default function PreviewPane({ markdown, title }) {
   return (

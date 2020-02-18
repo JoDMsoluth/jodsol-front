@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import profileBgHeader from "statics/images/profileBgHeader.jpg";
-import transitions from "lib/styles/transition";
-import palette from "lib/styles/palette";
-import CustomButton from "lib/CustomButton";
-import smoothScrollTo from "lib/scrollTo";
+import React from 'react';
+import styled from 'styled-components';
+import profileBgHeader from '../../statics/images/profileBgHeader.jpg';
+import transitions from '../../lib/styles/transition';
+import palette from '../../lib/styles/palette';
+import CustomButton from '../../lib/CustomButton';
+import smoothScrollTo from '../../lib/scrollTo';
 
 const ProfileHeader = () => {
   return (
@@ -25,7 +25,7 @@ const ProfileHeader = () => {
         <StyledCustomButton
           size="large"
           color="darkGray"
-          onClick={() => smoothScrollTo("introduce", 100)}
+          onClick={() => smoothScrollTo('introduce', 100)}
         >
           getting to know me
         </StyledCustomButton>

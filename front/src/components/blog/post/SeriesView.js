@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import MarkdownRender from 'components/common/markdown/MarkdownRender';
-import palette from 'lib/styles/palette';
-import thumbnail from 'statics/images/kickVillageProject.PNG';
+import MarkdownRender from '../../../components/common/markdown/MarkdownRender';
+import palette from '../../../lib/styles/palette';
+import thumbnail from '../../../statics/images/kickVillageProject.PNG';
 import SeriesPostsList from '../postsList/SereisPostsList';
 import PostToc from './PostToc';
 

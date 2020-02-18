@@ -1,13 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import palette from "lib/styles/palette";
+import React from 'react';
+import styled from 'styled-components';
+import palette from '../../../lib/styles/palette';
 
 export default function IntroBasicInfo() {
   return (
     <div>
       <ContentTitle>Basic Info</ContentTitle>
       <ContentWrap>
-        <Content style={{ fontSize: "0.7rem", marginBottom: "0.5rem" }}>
+        <Content style={{ fontSize: '0.7rem', marginBottom: '0.5rem' }}>
           <div>University Student</div>
           <div>interested in web development</div>
         </Content>

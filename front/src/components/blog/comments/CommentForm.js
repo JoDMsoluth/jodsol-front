@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { InputContainer, InputSpan } from 'lib/styles/inputStyle';
-import 'statics/css/icon.css';
-import palette from 'lib/styles/palette';
-import CustomButton from 'lib/CustomButton';
+import { InputContainer, InputSpan } from '../../../lib/styles/inputStyle';
+import '../../../statics/css/icon.css';
+import palette from '../../../lib/styles/palette';
+import CustomButton from '../../../lib/CustomButton';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 

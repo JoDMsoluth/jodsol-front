@@ -1,11 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
-import palette from 'lib/styles/palette';
+import palette from '../../lib/styles/palette';
 import { useDispatch } from 'react-redux';
-import { changeInput } from 'modules/stores/write';
-import CustomButton from 'lib/CustomButton';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { changeInput } from '../../modules/stores/write';
+import CustomButton from '../../lib/CustomButton';
 import { useRouteMatch } from 'react-router-dom';
 
 export default function WritePostOps({ tags }) {

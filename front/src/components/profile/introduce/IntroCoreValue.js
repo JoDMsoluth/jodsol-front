@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import palette from "lib/styles/palette";
-import CustomIcon from "lib/CustomIcon";
+import React from 'react';
+import styled from 'styled-components';
+import palette from '../../../lib/styles/palette';
+import CustomIcon from '../../../lib/CustomIcon';
 
 export default function IntroCoreValue() {
   return (

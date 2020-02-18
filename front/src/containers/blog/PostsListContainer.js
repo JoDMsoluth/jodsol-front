@@ -5,12 +5,12 @@ import {
   loadPostsInSeries,
   unloadPosts,
   searchPosts,
-} from 'modules/stores/posts';
+} from '../../modules/stores/posts';
 import { useDispatch, useSelector } from 'react-redux';
-import BlogContent from 'components/blog/postsList';
+import BlogContent from '../../components/blog/postsList';
 import qs from 'qs';
 import { useLocation, useRouteMatch } from 'react-router-dom';
-import Pagination from 'components/common/pagination/Pagination';
+import Pagination from '../../components/common/pagination/Pagination';
 
 const PostsListContainer = () => {
   const location = useLocation();

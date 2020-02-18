@@ -1,5 +1,5 @@
 import React from 'react';
-import AppLayoutContainer from 'containers/common/AppLayoutContainer';
+import AppLayoutContainer from '../containers/common/AppLayoutContainer';
 
 const ErrorPage = () => {
   return (

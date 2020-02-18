@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import NavButton from "./navButton";
-import NavBar from "./navBar";
-import SearchBar from "./searchBar";
-import palette from "lib/styles/palette";
+import React from 'react';
+import styled from 'styled-components';
+import NavButton from './navButton';
+import NavBar from './navBar';
+import SearchBar from './searchBar';
+import palette from '../../../lib/styles/palette';
 
 export default function BlogNavigation() {
   return (
